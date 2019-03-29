@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+
+          id="action_report_invoice_interkey"
+          string="Factura Interkey"
+          model="account.invoice"
+          report_type="qweb-pdf"
+          name="xmarts_zonas.report_invoice_document_interkey"
+          file="xmarts_zonas.invoice_report"
+          paperformat="xmarts_zonas.paperformat_reporteinterkey"
+          />
+    </data>
+</odoo>

@@ -1,0 +1,54 @@
+<odoo>
+  <data>
+    
+      <record id="view_partner_form_inherited" model="ir.ui.view">
+          <field name="name">res.partner.form.inherited</field>
+          <field name="model">res.partner</field>
+          <field name="inherit_id" ref="base.view_partner_form"/>
+          <field name="arch" type="xml">
+              <xpath expr="//field[@name='child_ids']/form/sheet/group/group[2]//field[@name='name']" position="before">
+                  <group>
+                        <field name="zone" placeholder="Zona" attrs="{'invisible': [('type','!=','delivery')]}"/>
+                  </group>
+              </xpath>
+             
+               <!--<xpath expr="//field[@name='child_ids']/form/sheet//div[@name='div_address']" position="replace">-->
+                  <!--
+                  <div class="o_address_format" name="div_address">
+                    <field name="street" placeholder="Calle..." class="o_address_street"/>
+                    <div attrs="{'invisible':[('country_code_rel','!=','MX')]}">
+                       <field name="l10n_mx_street3" placeholder="No. External..." style="width: 45%;" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                       <field name="l10n_mx_street4" placeholder="No. Internal..." style="width: 45%;" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                    </div>
+                    <field name="street2" placeholder="Calle 2..." class="o_address_street"/>
+                    <field name="zip" attrs="{'invisible':[('country_code_rel','=','MX')]}"/>
+                    <field name="zip_sat_id" placeholder="Codigo Postal" class="o_address_zip" options="{'no_create_edit': True,'no_create': True}" attrs="{'invisible':[('country_code_rel','!=','MX')]}"/>
+                    <field name="colonia_sat_id" placeholder="Colonia" class="oe_edit_only" domain="[('zip_sat_code','=',zip_sat_id)]" options="{'no_create_edit': True,'no_create': True}" attrs="{'invisible':[('country_code_rel','!=','MX')]}"/>
+                    <field name="city" invisible="1"/>
+                    <field name="township_sat_id" placeholder="Municipio" class="oe_edit_only" options="{'no_create_edit': True,'no_create': True}" attrs="{'invisible':[('country_code_rel','!=','MX')]}"/>
+                    <field name="state_id" class="o_address_state" placeholder="Estado" options="{&quot;no_open&quot;: True, 'no_create_edit': True,'no_create': True}" context="{'country_id': country_id, 'zip': zip}"/>
+                    <field name="zip" placeholder="C.P." class="o_address_zip"/>
+                    <field name="locality_sat_id" placeholder="Localidad" class="o_address_city oe_edit_only" options="{'no_create_edit': True,'no_create': True}"/>
+                    <field name="country_id" placeholder="Pa&#237;s" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                    <field name="country_code_rel" invisible="1" />
+                    <field name="parent_id" invisible="1" />
+                  </div>
+                -->
+                <!--</xpath>-->
+              </field>
+      </record> 
+
+
+      <record id="zona_partners" model="ir.actions.act_window">
+         <field name="name">Zonas</field>
+         <field name="res_model">zonas.partner</field>
+         <field name="view_type">form</field>
+         <field name="view_mode">tree,form</field>
+      </record>
+
+      <menuitem id="partner_conf" name="Configuracion" sequence="4" parent="contacts.menu_contacts" />
+          <menuitem id="item1" name="Zonas" sequence="5" parent="partner_conf" action="zona_partners" />
+
+
+  </data>
+</odoo>

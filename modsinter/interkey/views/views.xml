@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+     
+   <record id="view_accountinvoice_form_inherit" model="ir.ui.view">
+            <field name="name">view.accountinvoice.form.add.text.field</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+            <xpath expr="//field[@name='price_unit']" position="after">
+                    <field name="costo"  groups="account.group_account_manager" invisible="1"/>
+              </xpath>
+              <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="banco"  invisible="1"/>
+                    <field name="bank"  invisible="1"/>
+                    <field name="clabe"  invisible="1"/>
+              </xpath><!--
+             <xpath expr="//field[@name='state']" position="before">
+                    <button name="generate" string="Generar codigo bidemensional" type="object" attrs="{'invisible': [('cfdi_cbb', '!=', False)]}" />  
+              </xpath> -->
+             </field>
+        </record>
+
+     <record id="view_company_form_inherit_clave" model="ir.ui.view">
+            <field name="name">view.company.form.add.text.field.clave</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account.view_partner_property_form"/>
+            <field name="arch" type="xml">
+              <xpath expr="//field[@name='acc_number']" position="after">
+                <field name="clabe"/>
+              </xpath> 
+             </field>
+        </record>
+
+      <!--<record id="group_camp_cost" model="ir.ui.view">
+        <field name="name">group.camp.cost</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="interkey.view_accountinvoice_form_inherit" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='costo']" position="attributes">
+                <attribute name="groups">account.group_account_manager</attribute>
+            </xpath>
+        </field>
+      </record>-->
+      
+       <!--<record id="view_accountinvoicelionmx_form_inherit" model="ir.ui.view">
+            <field name="name">view.accountinvoicelionmx.form.add.text.field</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="l10n_mx_einvoice.account_invoice_form_l10n_mx_einvoice"/>
+            <field name="arch" type="xml">
+              <xpath expr="//notebook/page/group/field[@name='cfdi_cbb']" position="after">
+                    <button name="generate" string="Generar idemensional" type="object"  />
+              </xpath>
+
+             </field>
+        </record>-->
+
+   
+
+  </data>
+</odoo>
