@@ -13,6 +13,7 @@
                     <field name="banco"  invisible="1"/>
                     <field name="bank"  invisible="1"/>
                     <field name="clabe"  invisible="1"/>
+                    <field name="cuent_client" invisible="1"/>
               </xpath><!--
              <xpath expr="//field[@name='state']" position="before">
                     <button name="generate" string="Generar codigo bidemensional" type="object" attrs="{'invisible': [('cfdi_cbb', '!=', False)]}" />  

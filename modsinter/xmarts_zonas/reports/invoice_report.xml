@@ -154,10 +154,10 @@
                 <thead>
                   <tr style="font-family:Arial, sans-serif;font-size:10pt; color:#4B0082;">
                     <th style="width:10%;text-align:left;">Código</th>
-                    <!-- <th style="width:10%;text-align:center;">Clave SAT</th> -->
+                    <th style="width:14%;text-align:center;">Clave SAT</th>
                     <th style="width:3%; text-align:left;">Cant.</th>
                     <th style="width:5%;text-align:left;">Unidad</th>
-                    <th style="width:48%;text-align:left;">Descripción</th>
+                    <th style="width:44%;text-align:left;">Descripción</th>
                     <th style="width:11%;" class="text-left">P. Unitario</th>
                     <th style="width:11%;" class="text-left">Importe</th>
                   </tr>
@@ -166,11 +166,11 @@
                   <tr t-foreach="o.invoice_line_ids" t-as="l" style="font-family:Arial, sans-serif;font-size:8pt;">
 
                     <td style="text-align:center;">
+                      <span t-field="l.product_id.default_code"/>
+                    </td>
+                    <td style="text-align:center;">
                       <span t-field="l.product_id.l10n_mx_edi_code_sat_id.code"/>
                     </td>
-                    <!-- <td style="text-align:center;">
-                      <span t-raw="'%s &lt;br&gt;' % l.product_id and l.product_id.sat_product_id.code or ''"/>
-                    </td> -->
                     <td class="text-center">
                        <t t-esc="'{0:,.2f}'.format(int(l.quantity))" />
                     </td>
@@ -304,34 +304,47 @@
                 </tr>
                 <tr>
                   <td style="width:33%;font-family:Arial, sans-serif;font-size:9pt; text-align:center; border-right:1px solid gray, border-bottom:1px solid gray">
-                    <b>Certificado</b><br/><span t-field="o.l10n_mx_edi_cfdi_certificate_id.serial_number"/>
+                    <b>Certificado del Sat</b><br/><span t-field="o.l10n_mx_edi_cfdi_certificate_id.serial_number"/>
                   </td>
-                  <!-- <td style="width:33%;font-family:Arial, sans-serif;font-size:9pt; text-align:center; border-right:1px solid gray; border-left:1px solid gray;">
-                    <b>Fecha de Timbrado</b><br/><span t-field="o.cfdi_fecha_timbrado"/>
-                  </td> -->
+                  <td style="width:33%;font-family:Arial, sans-serif;font-size:9pt; text-align:center; border-right:1px solid gray; border-left:1px solid gray;">
+                    <b>Fecha de Timbrado</b><br/>
+                    <span t-esc="tfd.get('FechaTimbrado', '').replace('T', ' ')"/>
+                  </td>
                   <td style="width:34%;font-family:Arial, sans-serif;font-size:9pt; text-align:center; border-right:1px solid gray">
-                    <b>Folio Fiscal</b><br/><!-- <span t-esc="tfd.get('UUID')"/> -->
+                    <b>Folio Fiscal</b><br/>
+                    <span t-if="tfd.get('UUID')" t-esc="tfd.get('UUID')"/>
                   </td>
                 </tr>
                 <tr>
                   <div class="digital-stamp-content">
                   <td style="width:33%;border-top:1px solid gray;font-family:Arial, sans-serif;font-size:9pt; text-align:center; border-right:1px solid gray;">
-                    <b>Certificado del Emisor</b><br/><!-- <span t-esc="xml.get('noCertificado', xml.get('NoCertificado'))"/> -->
+                    <b>Certificado del Emisor</b><br/><span t-esc="xml.get('noCertificado', xml.get('NoCertificado'))"/>
                   </td>
                 </div>
                   <td style="width:33%;border-top:1px solid gray;font-family:Arial, sans-serif;font-size:9pt; text-align:center; border-right:1px solid gray">
                     <b>Método de pago</b><br/>
                     <span t-field="o.l10n_mx_edi_payment_method_id"/> 
-                    </td><!-- 
+                    </td>
                   <td style="width:34%;border-top:1px solid gray;font-family:Arial, sans-serif;font-size:9pt; text-align:center; border-right:1px solid gray">
-                    <b> Últimos 4 digitos de la cuenta bancaria</b><br/><span t-raw="'%s &lt;br&gt;' % o.acc_payment and o.acc_payment.last_acc_number or 'N/A'"/>
-                  </td> -->
+                    <b> Últimos 4 digitos de la cuenta bancaria</b><br/>
+                    <!--<span t-raw="'%s &lt;br&gt;' % o.acc_payment and o.acc_payment.last_acc_number or 'N/A'"/>-->
+                    <span t-field="o.cuent_client"/>
+                  </td> 
                 </tr>
                 <tr>
-                  <!-- <td style="width:33%;border-top:1px solid gray;font-family:Arial, sans-serif;font-size:9pt; text-align:center; border-right:1px solid gray;">
+                  <td style="width:33%;border-top:1px solid gray;font-family:Arial, sans-serif;font-size:9pt; text-align:center; border-right:1px solid gray;">
                     <b>Tipo de Comprobante</b><br/>
-                    [<span t-field="o.type_document_id.code"/>]  <span t-field="o.type_document_id.name"/>
-                  </td> -->
+                    <span >
+                      [<t t-esc="xml.get('TipoDeComprobante')" />]
+                    </span>
+                    <t t-if="xml.get('TipoDeComprobante')=='I'">
+                      <span>Ingreso</span>
+                    </t>
+                    <t t-if="not xml.get('TipoDeComprobante')=='I'">
+                      <span>Egreso</span>
+                    </t>
+                    <!--[<span t-field="o.type_document_id.code"/>]  <span t-field="o.type_document_id.name"/>-->
+                  </td>
                   <td style="width:33%;border-top:1px solid gray;font-family:Arial, sans-serif;font-size:8pt; text-align:center; border-right:1px solid gray">
                     <b>Forma de pago</b><br/>
                     <span t-field="o.l10n_mx_edi_payment_method_id"/>
@@ -348,10 +361,6 @@
                 
                 <t t-if="o.l10n_mx_edi_cfdi_uuid">
                 <div class="row" id="complement">
-                    <div class="barcode col-3">
-                        <t t-set="sello" t-value="xml.get('Sello', 'No identificado')[-8:]"/>
-                        <img alt="Barcode" t-att-src="'/report/barcode/?type=QR&amp;value=%s' % quote_plus(                             'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(                                 re=o.l10n_mx_edi_cfdi_supplier_rfc, rr=o.l10n_mx_edi_cfdi_customer_rfc,                                 tt=o.l10n_mx_edi_cfdi_amount, id=o.l10n_mx_edi_cfdi_uuid)                                 + '&amp;fe=%s' % quote_plus(                                     sello, 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
-                    </div>
                     <div class="complement-details col-9">
                         <div class="">
                             <span>
@@ -412,6 +421,10 @@
                         <div class="digital-stamp-content text-center">
                             <strong>Este documento es una representación impresa de un CFDI</strong>
                         </div>
+                    </div>
+                    <div class="barcode col-3">
+                        <t t-set="sello" t-value="xml.get('Sello', 'No identificado')[-8:]"/>
+                        <img alt="Barcode" t-att-src="'/report/barcode/?type=QR&amp;value=%s' % quote_plus(                             'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(                                 re=o.l10n_mx_edi_cfdi_supplier_rfc, rr=o.l10n_mx_edi_cfdi_customer_rfc,                                 tt=o.l10n_mx_edi_cfdi_amount, id=o.l10n_mx_edi_cfdi_uuid)                                 + '&amp;fe=%s' % quote_plus(                                     sello, 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
                     </div>
                 </div>
             </t>

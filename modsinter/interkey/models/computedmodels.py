@@ -37,6 +37,18 @@ class AddComputes(models.Model):
 	bank = fields.Char(string="Banco clave interbancaria",compute="_compute_bank")
 	banco =fields.Char(string="Banco",compute="_compute_banks")
 	clabe = fields.Char(string="Clabe", compute="_compute_clabe")
+	cuent_client = fields.Char(string="Cuenta cliente", compute="_compute_cuenta_cliente")
+
+	@api.one
+	def _compute_cuenta_cliente(self):
+		bank_obj = self.env['res.partner.bank']
+		partner=self.partner_id
+		bank_ids = bank_obj.search([('partner_id', '=', partner.id)])
+		bank =''
+		apa = True
+		for bk in bank_ids:
+			bank = bank+ ' '+str(bk.acc_number)
+		self.cuent_client = bank[-4:]
 
 	@api.one
 	def _compute_bank(self):
