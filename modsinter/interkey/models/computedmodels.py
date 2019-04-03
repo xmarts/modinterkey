@@ -38,6 +38,12 @@ class AddComputes(models.Model):
 	banco =fields.Char(string="Banco",compute="_compute_banks")
 	clabe = fields.Char(string="Clabe", compute="_compute_clabe")
 	cuent_client = fields.Char(string="Cuenta cliente", compute="_compute_cuenta_cliente")
+	ultim_digitos = fields.Char(string="Ultimos 4 dijitos", compute="_compute_digitos")
+
+	@api.one
+	def _compute_digitos(self):
+		if self.move_name:
+			self.ultim_digitos = self.move_name[-4:]
 
 	@api.one
 	def _compute_cuenta_cliente(self):

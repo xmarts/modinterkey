@@ -36,7 +36,6 @@
             </t>
             <table border="1" width="100%"><colgroup span="16" width="48"></colgroup>
             <tbody>
-
               <tr>
                 <td rowspan="7" aling="center" style="positoin:relative;">
                   <span>
@@ -45,16 +44,21 @@
                 </td> 
                 <td rowspan="6" width="3%">
                 </td>
-                <td colspan="9" align="left" valign="middle" width="45%">
+                <td style="line-height:1;" colspan="9" align="left" valign="middle" width="45%">
                   <span style="color: #000000; font-family: Arial; font-size: 18px;"><strong><span t-esc="company.name"/></strong></span>
                 </td>
                 <td rowspan="6" width="10%" >
                 </td>
-                <td colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Factura: </span><strong><span t-field="o.move_name"/></strong></td>
+                <td style="line-height:1;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Factura: </span>
+                <strong>
+                  <span t-field="o.ultim_digitos"/>
+
+                </strong>
+              </td>
               </tr>
 
               <tr>
-                <td colspan="9" align="left" valign="middle">
+                <td style="line-height:1;" colspan="9" align="left" valign="middle">
                   <span style="color: #000000; font-family: Arial;">
                     <!--<span t-field="o.company_id.partner_id.street"/>-->
                     <span t-field="o.company_id.partner_id.street_name" />
@@ -67,28 +71,28 @@
                     </span>
                 </td>
 
-                <td colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Fecha: </span><span t-field="o.date_invoice"/>
+                <td style="line-height:1;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Fecha: </span><span t-field="o.date_invoice"/>
               </td>
             </tr>
 
             <tr>
-              <td colspan="9" align="left" valign="middle"><span style="color: #000000; font-family: Arial;"><span t-field="o.company_id.partner_id.l10n_mx_edi_locality"/>, <span t-field="o.company_id.partner_id.state_id.name"/>, 
+              <td style="line-height:1;" colspan="9" align="left" valign="middle"><span style="color: #000000; font-family: Arial;"><span t-field="o.company_id.partner_id.l10n_mx_edi_locality"/>, <span t-field="o.company_id.partner_id.state_id.name"/>, 
               <span t-field="o.company_id.country_id.name"/></span></td>
-              <td colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Total a pagar: </span><span t-field="o.amount_total"/></td>
+              <td style="line-height:1;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Total a pagar: </span><span t-field="o.amount_total"/></td>
             </tr>
 
             <tr>
-              <td colspan="9" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">RFC: </span><span t-field="o.company_id.vat"/></td>
-              <td colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Fecha limite de pago: </span><span t-field="o.date_due"/></td>
+              <td style="line-height:1;" colspan="9" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">RFC: </span><span t-field="o.company_id.vat"/></td>
+              <td style="line-height:1;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Fecha limite de pago: </span><span t-field="o.date_due"/></td>
             </tr>
 
             <tr>
-              <td colspan="9" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Tel. (33) 3616-5577 con 20 lineas.</span></td>
-              <td colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Condiciones: </span><span t-field="o.payment_term_id"/></td>
+              <td style="line-height:1;" colspan="9" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Tel. (33) 3616-5577 con 20 lineas.</span></td>
+              <td style="line-height:1;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Condiciones: </span><span t-field="o.payment_term_id"/></td>
             </tr>
             <tr>
-              <td colspan="12" align="left" valign="middle" style="word-spacing:0.3cm;">
-                <p>cobranza@interkeypartners.com ventas@interkeypartners.com www.interkeypartners.com</p>
+              <td colspan="12" align="left" valign="middle" style="word-spacing:1.4cm; line-height:1;">
+                <p>cobranza@ikp.mx / ventas@ikp.mx / www.interkeypartners.com</p>
               </td>
             </tr>
           </tbody>
@@ -101,35 +105,59 @@
               <tbody>
                 <tr>
                   <td style="font-size:0.8em; border-top: 1px solid #000000; border-left: 1px solid #000000; width: 537.45px;" colspan="15" align="left" valign="middle" height="5">
-                    <span style="color: #000000; font-family: Arial;">Clientes: </span>
+                    <span style="color: #000000; font-family: Arial;"> 
+                      <strong>Cliente:</strong>
+                    </span>
                     <span t-raw="'%s &lt;br&gt;' % o.partner_id.parent_id.name if o.partner_id.parent_id else o.partner_id.name"/>
                 </td>
-                  <td style="font-size:0.8em; border-top: 1px solid #000000; border-right: 1px solid #000000; width: 151.817px;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">RFC: </span><span t-raw="'%s &lt;br&gt;' % o.partner_id.parent_id.vat if o.partner_id.parent_id else o.partner_id.vat"/></td>
+                  <td style="font-size:0.8em; border-top: 1px solid #000000; border-right: 1px solid #000000; width: 151.817px;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;"> <strong>RFC:</strong> </span><span t-raw="'%s &lt;br&gt;' % o.partner_id.parent_id.vat if o.partner_id.parent_id else o.partner_id.vat"/></td>
                   <td style="width: 37.7333px;" align="left" valign="bottom"><span style="color: #000000; font-family: Arial;"></span></td>
                 </tr>
                 <tr>
-                  <td style="font-size:0.8em; border-left: 1px solid #000000; width: 320.1px;" colspan="12" align="left" valign="middle" height="15"><span style="color: #000000; font-family: Arial;">Domicilio: </span><span t-field="o.partner_id.street"/></td>
+                  <td style="font-size:0.8em; border-left: 1px solid #000000; width: 320.1px;" colspan="12" align="left" valign="middle" height="15">
+                    <span style="color: #000000; font-family: Arial;">
+                      <strong>Domicilio:</strong>
+                    </span>
+                    <strong>Calle:</strong> <span t-field="o.partner_id.street_name"/>,
+                    <strong>Num Int:</strong> <span t-field="o.partner_id.street_number" />,
+                    <strong>Num Ext:</strong> <span t-field="o.partner_id.street_number2" />,
+                    <strong>Colonia:</strong> <span t-field="o.partner_id.l10n_mx_edi_colony"/>,
+                    <strong>Localidad:</strong> <span t-field="o.partner_id.l10n_mx_edi_locality" />
+                  </td>
                   <td></td>
-                  <td style="font-size:0.8em; border-right: 1px solid #000000; width: 151.817px;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">C.P.: </span><span t-field="o.partner_id.zip"/></td>
+                  <td style="font-size:0.8em; border-right: 1px solid #000000; width: 151.817px;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">
+                    <strong>C.P.:</strong>
+                  </span><span t-field="o.partner_id.zip"/></td>
                 </tr>
                 <tr>
                   <!-- <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; width: 320.1px;" colspan="2" align="left" valign="middle" height="18"><span style="color: #000000; font-family: Arial;"> </span><span t-field="o.partner_id.l10n_mx_edi_colony"/></td> -->
-                  <td style="font-size:0.8em; border-left: 1px solid #000000; border-bottom: 1px solid #000000; width: 217.35px;" colspan="15" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Ciudad: </span>
-                  <span t-field="o.partner_id.city"/>
-                  <span t-field="o.partner_id.state_id.name"/>,
-                  <span t-field="o.partner_id.country_id.name"/></td>
-                  <td style="font-size:0.8em; border-bottom: 1px solid #000000; border-right: 1px solid #000000; width: 151.817px;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Tel: </span><span t-field="o.partner_id.phone"/></td>
+                  <td style="font-size:0.8em; border-left: 1px solid #000000; border-bottom: 1px solid #000000; width: 217.35px;" colspan="15" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">
+                    <strong>Ciudad</strong>
+                    <span t-field="o.partner_id.city"/>,
+                    <strong>Estado:</strong> <span t-field="o.partner_id.state_id.name"/>,
+                    <strong>País:</strong> <span t-field="o.partner_id.country_id.name"/>
+                  </span>
+                </td>
+                  <td style="font-size:0.8em; border-bottom: 1px solid #000000; border-right: 1px solid #000000; width: 151.817px;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;"> <strong>Tel:</strong> </span><span t-field="o.partner_id.phone"/></td>
                   <td style="width: 37.7333px;" align="left" valign="bottom"><span style="color: #000000; font-family: Arial;"></span></td>
                 </tr>
                 <tr>
                   <td style="font-size:0.8em; border-top: 1px solid #000000; border-left: 1px solid #000000; width: 537.45px;" colspan="15" rowspan="2" align="left" valign="middle">
-                    <span style="color: #000000; font-family: Arial;" t-if="o.partner_shipping_id">Direccion de Entrega: </span>
-                    <span style="color: #000000; font-family: Arial;"><span t-field="o.partner_shipping_id.street"/></span>
-                    <span t-field="o.partner_shipping_id.l10n_mx_edi_colony"/>
-                    CP. <span t-field="o.partner_shipping_id.zip"/><br />
-                    <span style="color: #000000; font-family: Arial;"><span t-field="o.partner_shipping_id.l10n_mx_edi_locality"/>, 
-                    <span t-field="o.partner_shipping_id.state_id.name"/>, 
-                    <span t-field="o.partner_shipping_id.country_id.name"/></span>
+                    <span style="color: #000000; font-family: Arial;" t-if="o.partner_shipping_id">
+                      <strong>Direccion de Entrega:</strong>
+                    </span>
+                    <span style="color: #000000; font-family: Arial;">
+                      <strong>Calle:</strong> <span t-field="o.partner_shipping_id.street_name"/>,
+                      <strong>Num Int:</strong> <span t-field="o.partner_shipping_id.street_number"/>,
+                      <strong>Num Ext:</strong> <span t-field="o.partner_shipping_id.street_number2" />,
+                      <strong>Colonia:</strong> <span t-field="o.partner_shipping_id.l10n_mx_edi_colony"/>,
+                    </span>
+                    CP: <span t-field="o.partner_shipping_id.zip"/><br />
+                    <span style="color: #000000; font-family: Arial;">
+                      <strong>Localidad:</strong> <span t-field="o.partner_shipping_id.l10n_mx_edi_locality"/>, 
+                      <strong>Estado:</strong> <span t-field="o.partner_shipping_id.state_id.name"/>, 
+                      <strong>País:</strong> <span t-field="o.partner_shipping_id.country_id.name"/>
+                    </span>
                   </td>
                   <td style="font-size:0.8em; border-right: 1px solid #000000; width: 151.817px;" colspan="4" rowspan="2" align="left" valign="middle">
                     <span style="color: #000000; font-family: Arial;">Zona: </span>
@@ -141,7 +169,10 @@
                   <td style="width: 37.7333px;" align="left" valign="bottom"></td>
                 </tr>
                 <tr>
-                  <td style="font-size:0.8em; border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; width: 500.683px;" colspan="14" align="left" valign="middle" height="18"></td>
+                  <td style="font-size:0.8em; border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; width: 500.683px;" colspan="14" align="left" valign="middle" height="18">
+                    <span style="color: #000000; font-family: Arial;">Observaciones: </span>
+                    <span t-field="o.comment"/>
+                  </td>
                   <td style="font-size:0.8em; border: 1px solid #000000; width: 188.583px;" colspan="5" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Ejecutivo: </span><span t-field="o.user_id.name"/></td>
                   <td style="width: 37.7333px;" align="left" valign="bottom"><span style="color: #000000; font-family: Arial;"></span></td>
                 </tr>
@@ -153,33 +184,33 @@
             <table class="table table-condensed" >
                 <thead>
                   <tr style="font-family:Arial, sans-serif;font-size:10pt; color:#4B0082;">
-                    <th style="width:10%;text-align:left;">Código</th>
-                    <th style="width:14%;text-align:center;">Clave SAT</th>
+                    <!--<th style="width:10%;text-align:left;">Código</th>-->
                     <th style="width:3%; text-align:left;">Cant.</th>
                     <th style="width:5%;text-align:left;">Unidad</th>
-                    <th style="width:44%;text-align:left;">Descripción</th>
+                    <th style="width:44%;text-align:left;">Código y Descripción</th>
+                    <th style="width:14%;text-align:center;">Clave SAT</th>
                     <th style="width:11%;" class="text-left">P. Unitario</th>
                     <th style="width:11%;" class="text-left">Importe</th>
                   </tr>
                 </thead>
                 <tbody class="invoice_tbody">
-                  <tr t-foreach="o.invoice_line_ids" t-as="l" style="font-family:Arial, sans-serif;font-size:8pt;">
+                  <tr t-foreach="o.invoice_line_ids" t-as="l" style="font-family:Arial, sans-serif;font-size:8pt; border-bottom: 1px solid gray;">
 
-                    <td style="text-align:center;">
+                    <!--<td style="text-align:center;">
                       <span t-field="l.product_id.default_code"/>
-                    </td>
-                    <td style="text-align:center;">
-                      <span t-field="l.product_id.l10n_mx_edi_code_sat_id.code"/>
-                    </td>
+                    </td>-->
                     <td class="text-center">
                        <t t-esc="'{0:,.2f}'.format(int(l.quantity))" />
                     </td>
                     <td style="text-align:center;">
                       <span t-field="l.product_id.uom_name"/>
                     </td>
-                    <td class="text-center">
+                    <td class="text-left">
                     <span t-raw="'%s &lt;br&gt;' % l.name if l.name.find('] ') &lt; 0 else l.name[l.name.find('] ')+2:]"/>
                   </td>
+                  <td style="text-align:center;">
+                      <span t-field="l.product_id.l10n_mx_edi_code_sat_id.code"/>
+                    </td>
                   <td class="text-center">
                     <span t-field="l.price_unit"/>
                   </td>
@@ -227,6 +258,14 @@
                                         <td class="text-right">
                                             <span t-field="o.amount_total"/>
                                         </td>
+                                    </tr>
+                                    <tr class="border-black">
+                                      <td>
+                                        <strong>Moneda</strong>
+                                      </td>
+                                      <td class="text-right">
+                                        <span t-field="o.currency_id" />
+                                      </td>
                                     </tr>
 
                    
@@ -294,12 +333,20 @@
                 </tr>
                  <tr>
                   <td colspan="3" style="width:33%;border-top:1px solid gray;font-family:Arial, sans-serif;font-size:10pt; text-align:left; border-right:1px solid gray; border-bottom:1px solid gray; word-spacing: 18px;">
-                    <span style="word-spacing: 2px;"> Banco:</span><span style="word-spacing: 2px;" t-field="o.banco"/>
-                    <span style="word-spacing: 3px;"> Número de Cuenta: </span>
+                    <span style="word-spacing: 2px;"> 
+                      <strong>Banco:</strong> 
+                    </span><span style="word-spacing: 2px;" t-field="o.banco"/>
+                    <span style="word-spacing: 3px;">
+                      <strong>Número de Cuenta:</strong>
+                    </span>
                     <span style="letter-spacing: 2px; word-spacing: 10px;" t-field="o.bank"/>
-                    <span> Clave: </span>
+                    <span>
+                      <strong>Clave:</strong>
+                    </span>
                     <span style="letter-spacing: 2px;" t-field="o.clabe"/>
-                    <span> Referencia: </span><span t-field="o.number"/>
+                    <span>
+                      <strong>Referencia:</strong>
+                    </span><span t-field="o.ultim_digitos"/>
                   </td>
                 </tr>
                 <tr>
@@ -356,7 +403,6 @@
                 </tr>
                 
               </table>
-              <br/>
               <table style=" border:1px solid gray; width:100%;" >
                 
                 <t t-if="o.l10n_mx_edi_cfdi_uuid">
@@ -402,7 +448,7 @@
                         <div t-if="xml.Emisor.xpath('cfdi:ExpedidoEn', namespaces=xml.nsmap)" class="digital-stamp-content">
                             <span t-esc="' | '.join([ '%s: %s' % (key, value) for key, value in xml.Emisor.ExpedidoEn.items()])"/>
                         </div>
-                        <div class="">
+                        <!--<div class="">
                             <span>
                               <strong>
                                 Información Extra
@@ -417,10 +463,10 @@
                             <span> | Fecha de Emisión:</span> <span t-esc="xml.get('fecha', xml.get('Fecha', '')).replace('T', ' ')"/>
                             <span> | Fecha de Certificación:</span> <span t-esc="tfd.get('FechaTimbrado', '').replace('T', ' ')"/>
                             <span> | Folio Fiscal:</span> <span t-esc="tfd.get('UUID')"/>
-                        </div>
-                        <div class="digital-stamp-content text-center">
+                        </div>-->
+                        <!--<div class="digital-stamp-content text-center">
                             <strong>Este documento es una representación impresa de un CFDI</strong>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="barcode col-3">
                         <t t-set="sello" t-value="xml.get('Sello', 'No identificado')[-8:]"/>
@@ -476,7 +522,7 @@
                 </tr>
               </table>-->
 
-              <table style=" border:0px solid white; width:100%; margin-top:2em; " >
+              <table style=" border:0px solid white; width:100%; margin-top:0.5em; " >
                 <tr>
                   <td style="width:35%;font-family:Arial, sans-serif;font-size:9pt; text-align:left;">
                     “Este documento es una representación impresa de un CFDI”  expedido en 44600 Jalisco  Aprobación: 20170223  Año aprobación: 2017
@@ -484,23 +530,23 @@
                 </tr>
                 <tr>
                   <td style="width:35%;font-family:Arial, sans-serif;font-size:9pt; text-align:left;">
-                    CFDI Ver. 3.3. Regimen Fiscal: 601 General de Ley Personas Morales           * Efectos fiscales al pago  * Pago en una sola exibición
+                    CFDI Ver. 3.3. Regimen Fiscal: 601 General de Ley Personas Morales           * Efectos fiscales al pago.
                   </td>
                 </tr>
 
               </table>
-              <br/>
+              <!--
               <div style="text-align:justify;">
                 <span style="color: #000000; font-family: Arial, sans-serif;font-size:9pt;">
                   <strong>Observaciones:</strong>
                 </span><span style="font-size:10pt;" t-field="o.comment"/>
               </div>
-              <br/>
-              <div style="text-align:justify; font-family: Arial, sans-serif; font-size:9pt;">
+              <br/>-->
+              <div style="text-align:justify; font-family: Arial, sans-serif; font-size:9pt; margin-top:0.5em;">
                <strong>PAGARE MERCANTIL.</strong> Debo y pagaré incondicionalmente por este pagaré a la orden de <span style="margin-left:0.5em;" t-field="o.company_id.partner_id.name"/>. En esta ciudad de Guadalajara,Jalisco.
                La cantidad de <span t-field="o.amount_total"/> (<span style="text-transform:uppercase;"  t-field="o.amount_to_text"/>) valor de la mercancía descrita y reciba a mi entera satisfacción. Este
                pagaré es mercantil y esta regido por la ley general de títulos y operaciones de crédito en su articulo 173 parte final y articulos correlativos por no ser pagaré
-               domiciliado. De no ser liquidado a su vencimiento causara 5% de interés mensual. En caso de cheque devuelto causara una penalización de $ 500.00 (QUINIENTOS PESOS 00/100 M.N) más iva, más una pena de incumplimiento del 5% de interés mensual.
+               domiciliado. De no ser liquidado a su vencimiento causara 5% de interés mensual. En caso de cheque devuelto causara una penalización de $950.00 (NOVECIENTOS CINCUENTA PESOS 00/100 M.N) más iva, más una pena de incumplimiento del 5% de interés mensual.
              </div>
 
 
