@@ -14,8 +14,8 @@
            />
         
         <template id="sales_commission_worksheet_id">
-                <t t-foreach="docs" t-as="doc">
-                    <t t-call="web.internal_layout">
+               <t t-call="web.basic_layout">
+                    <t t-foreach="docs" t-as="doc">
                          <div class="page">
                              <div>
                                  <h3><strong>
@@ -42,13 +42,16 @@
                                  </tr>
                              </table>
                              <h3>
-                             	<strong><p>Sales Commission Lines</p></strong>
-                             	<table class="table table-responsive">
+                                <strong><p>Sales Commission Lines</p></strong>
+                                <table class="table table-responsive">
                                 <tr>
                                     <td><strong>Commission Date</strong></td>
                                     <td><strong>User Type</strong></td>
                                     <td><strong>Amount</strong></td>
                                     <td><strong>Amount in Company Currency</strong></td>
+                                    <td>
+                                        <strong>Source Document</strong>
+                                    </td>
                                     <td><strong>Status</strong></td>
                                     <td><strong>Is Commision Line Paid</strong></td>
                                 </tr>
@@ -58,6 +61,9 @@
                                         <td><span t-field="line.type"/></td>
                                         <td><span t-field="line.amount" t-options='{"widget": "monetary", "display_currency": line.source_currency}'/></td>
                                         <td><span t-field="line.amount_company_currency" t-options='{"widget": "monetary", "display_currency": line.currency_id}'/></td>
+                                        <td>
+                                            <span t-field="line.origin" />
+                                        </td>
                                         <td><span t-field="line.state"/></td>
                                         <td><span t-field="line.is_paid"/></td>
                                     </tr>
@@ -66,7 +72,7 @@
                              </h3>
                              
                         </div>
-                </t>
+               </t>
                </t>
         </template>
         

@@ -89,6 +89,61 @@ class AddComputes(models.Model):
 			bank = bank + ' ' + str(bk.clabe)
 		self.clabe= bank
 
+	"""@api.multi
+    def create_base_commission(self, type):
+        commission_obj = self.env['sales.commission']
+        product = self.env['product.product'].search([('is_commission_product','=',1)],limit=1)
+        for order in self:
+            if type == 'sales_person':
+                user = order.user_id.id
+            if type == 'sales_manager':
+                user = order.team_id.user_id.id
+
+            today = date.today()
+            first_day = today.replace(day=1)
+            last_day = datetime.datetime(today.year,today.month,1)+relativedelta(months=1,days=-1)
+            commission_value = {
+                    'start_date' : first_day,
+                    'end_date': last_day,
+                    'product_id':product.id,
+                    'commission_user_id': user,
+                }
+            commission_id = commission_obj.create(commission_value)
+        return commission_id"""
+
+
+	@api.multi
+	def create_base_commission(self, type):
+		commission_obj = self.env['sales.commission']
+		product = self.env['product.product'].search([('is_commission_product','=',1)],limit=1)
+		for order in self:
+			if type == 'sales_person':
+				user = order.sales_user_id.id
+			if type == 'sales_manager':
+				user = order.sales_team_id.user_id.id
+			#today = date.today()
+			##first_day = today.replace(day=1)
+			#last_day = datetime.datetime(today.year,today.month,1)+relativedelta(months=1,days=-1)
+			today = datetime.datetime.now()
+			day = today.day
+			if day >= 1 and day <= 15:
+				dstart = today.replace(day=1,hour=00,minute=00,second=00)
+				last_day = dstart + relativedelta(days=14,hour=23,minute=59)
+			else:
+				dstart = today.replace(day=1,hour=00,minute=00,second=00)
+				last_day = dstart + relativedelta(months=1,days=-1,hours=23,minutes=59,seconds=59)
+				dstart = today.replace(day=16)
+			#first_day = today.replace(day=1)
+			#last_day = datetime.datetime(today.year,today.month,1)+relativedelta(months=1,days=-1)
+			commission_value = {
+				'start_date' : dstart,
+				'end_date': last_day,
+				'product_id':product.id,
+				'commission_user_id': user,
+			}
+		commission_id = commission_obj.create(commission_value)
+		return commission_id
+
 
 	@api.multi
 	def action_invoice_paid(self):
