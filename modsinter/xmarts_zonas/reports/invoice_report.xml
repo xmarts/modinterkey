@@ -87,7 +87,7 @@
             </tr>
 
             <tr>
-              <td style="line-height:1;" colspan="9" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Tel. (33) 3616-5577 con 20 lineas.</span></td>
+              <td style="line-height:1;" colspan="9" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Tel. (33) 3616-5577 con 20 líneas.</span></td>
               <td style="line-height:1;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Condiciones: </span><span t-field="o.payment_term_id"/></td>
             </tr>
             <tr>
@@ -104,7 +104,7 @@
         <div class="text-right" >
         </div>
 
-        <table border="0" cellspacing="0" width="105%"><colgroup span="18" width="48"></colgroup> <colgroup width="51"></colgroup> <colgroup width="48"></colgroup>
+        <table style="margin-top:1em;" border="0" cellspacing="0" width="105%"><colgroup span="18" width="48"></colgroup> <colgroup width="51"></colgroup> <colgroup width="48"></colgroup>
               <tbody>
                 <tr>
                   <td style="font-size:0.8em; border-top: 1px solid #000000; border-left: 1px solid #000000; width: 537.45px;" colspan="15" align="left" valign="middle" height="5">
@@ -113,11 +113,11 @@
                     </span>
                     <span t-raw="'%s &lt;br&gt;' % o.partner_id.parent_id.name if o.partner_id.parent_id else o.partner_id.name"/>
                 </td>
-                  <td style="font-size:0.8em; border-top: 1px solid #000000; border-right: 1px solid #000000; width: 151.817px;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;"> <strong style="margin-left:0.2em;">RFC:</strong> </span><span t-raw="'%s &lt;br&gt;' % o.partner_id.parent_id.vat if o.partner_id.parent_id else o.partner_id.vat"/></td>
+                  <td style="font-size:0.8em; border-left: 1px solid #000000; border-top: 1px solid #000000; border-right: 1px solid #000000; width: 151.817px;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;"> <strong style="margin-left:0.2em;">RFC:</strong> </span><span t-raw="'%s &lt;br&gt;' % o.partner_id.parent_id.vat if o.partner_id.parent_id else o.partner_id.vat"/></td>
                   <td style="width: 37.7333px;" align="left" valign="bottom"><span style="color: #000000; font-family: Arial;"></span></td>
                 </tr>
                 <tr>
-                  <td style="font-size:0.8em; border-left: 1px solid #000000; width: 320.1px;" colspan="12" align="left" valign="middle" height="15">
+                  <td style="font-size:0.8em; border-left: 1px solid #000000; width: 537.45px;" colspan="15" align="left" valign="middle" height="15">
                     <span style="color: #000000; font-family: Arial; margin-left:0.2em;">
                       <span>Domicilio:</span>
                     </span>
@@ -129,21 +129,26 @@
                     <span t-field="o.partner_id.l10n_mx_edi_colony"/>
                     <span style="margin-left:0.5em;">C.P:</span>
                     <span style="margin-left:0.5em;" t-field="o.partner_id.zip"/>
-                  </td>
-                  <td style="font-size:0.8em; border-right: 1px solid #000000; width: 151.817px;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">
-                    <strong style="margin-left:0.5em;">No cte:</strong>
-                  </span><span t-field="o.partner_id.ref"/></td>
-                </tr>
-                <tr>
-                  <!-- <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; width: 320.1px;" colspan="2" align="left" valign="middle" height="18"><span style="color: #000000; font-family: Arial;"> </span><span t-field="o.partner_id.l10n_mx_edi_colony"/></td> -->
-                  <td style="font-size:0.8em; border-left: 1px solid #000000; border-bottom: 1px solid #000000; width: 217.35px;" colspan="15" align="left" valign="middle">
                     <span style="margin-left:0.2em;">
                       <span style="" t-field="o.partner_id.l10n_mx_edi_locality"/>,
                       <span style="margin-left:0.5em;" t-field="o.partner_id.state_id.name"/>,
                       <span style="margin-left:0.5em;" t-field="o.partner_id.country_id.name"/>.
                     </span>
+                  </td>
+                  <td style="font-size:0.8em; border-left: 1px solid #000000; border-right: 1px solid #000000; width: 151.817px;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">
+                    <strong style="margin-left:0.2em;">No cte:</strong>
+                  </span><span t-field="o.partner_id.ref"/></td>
+                </tr>
+                <tr>
+                  <!-- <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; width: 320.1px;" colspan="2" align="left" valign="middle" height="18"><span style="color: #000000; font-family: Arial;"> </span><span t-field="o.partner_id.l10n_mx_edi_colony"/></td> -->
+                  <td style="font-size:0.8em; border-left: 1px solid #000000; border-bottom: 1px solid #000000; width: 217.35px;" colspan="15" align="left" valign="middle">
+                    <!--<span style="margin-left:0.2em;">
+                      <span style="" t-field="o.partner_id.l10n_mx_edi_locality"/>,
+                      <span style="margin-left:0.5em;" t-field="o.partner_id.state_id.name"/>,
+                      <span style="margin-left:0.5em;" t-field="o.partner_id.country_id.name"/>.
+                    </span>-->
                 </td>
-                  <td style="font-size:0.8em; border-bottom: 1px solid #000000; border-right: 1px solid #000000; width: 151.817px;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;"> <strong style="margin-left:0.2em;">Tel:</strong> </span><span t-field="o.partner_id.phone"/></td>
+                  <td style="font-size:0.8em; border-left: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000; width: 151.817px;" colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;"> <strong style="margin-left:0.2em;">Tel:</strong> </span><span t-field="o.partner_id.phone"/></td>
                   <td style="width: 37.7333px;" align="left" valign="bottom"><span style="color: #000000; font-family: Arial;"></span></td>
                 </tr>
                 <tr>
@@ -162,14 +167,14 @@
                     <span style="margin-left:0.5em;">
                       CP:
                     </span>
-                    <span t-field="o.partner_shipping_id.zip"/><br />
+                    <span t-field="o.partner_shipping_id.zip"/>
                     <span style="color: #000000; font-family: Arial; margin-left:0.2em;">
                       <span style="" t-field="o.partner_shipping_id.l10n_mx_edi_locality"/>,
                       <span style="margin-left:0.5em;" t-field="o.partner_shipping_id.state_id.name"/>,
                       <span style="margin-left:0.5em;" t-field="o.partner_shipping_id.country_id.name"/>
                     </span>
                   </td>
-                  <td style="font-size:0.8em; border-right: 1px solid #000000; width: 151.817px;" colspan="4" rowspan="2" align="left" valign="middle">
+                  <td style="font-size:0.8em; border-left: 1px solid #000000; border-right: 1px solid #000000; width: 151.817px;" colspan="4" rowspan="2" align="left" valign="middle">
                     <span style="color: #000000; font-family: Arial; margin-left:0.2em;">
                       <strong>
                         Zona:
@@ -183,7 +188,7 @@
                   <td style="width: 37.7333px;" align="left" valign="bottom"></td>
                 </tr>
                 <tr>
-                  <td style="font-size:0.8em; border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; width: 500.683px;" colspan="14" align="left" valign="middle" height="18">
+                  <td style="font-size:0.8em; border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; width: 539.55px;" colspan="14" align="left" valign="middle" height="18">
                     <span style="color: #000000; font-family: Arial; margin-left:0.2em;">
                       <strong>
                         Observaciones:
@@ -209,7 +214,7 @@
                     <!--<th style="width:10%;text-align:left;">Código</th>-->
                     <th style="width:3%; text-align:left;">Cant.</th>
                     <th style="width:5%;text-align:left;">Unidad</th>
-                    <th style="width:44%;text-align:left;">Código y Descripción</th>
+                    <th style="width:44%;text-align:left; padding-left:0px;">Código y Descripción</th>
                     <th style="width:14%;text-align:center;">Clave SAT</th>
                     <th style="width:11%;" class="text-left">P. Unitario</th>
                     <th style="width:11%; padding-right:0px;" class="text-right">Importe</th>
@@ -243,14 +248,14 @@
                   </tr>
                 </tbody>
               </table>
-
-              <div class="clearfix" style="font-family:Arial, sans-serif;font-size:10pt; ">
+              
+              <div class="clearfix" style="font-family:Arial, sans-serif;font-size:10pt; margin-top:-10px;">
                         <div id="total" class="row">
                             <div t-attf-class="#{'col-3' if report_type != 'html' else 'col-sm-4 col-md-3'} ml-auto">
                                 <table class="table table-sm">
-                                    <tr class="border-black o_subtotal" style="">
-                                        <td><strong>Subtotal</strong></td>
-                                        <td class="text-right">
+                                    <tr class="">
+                                        <td style="border-style:none;"><strong>Subtotal</strong></td>
+                                        <td style="border-style:none;" class="text-right">
                                             <span t-field="o.amount_untaxed"/>
                                         </td>
                                     </tr>
@@ -341,7 +346,7 @@
 
  -->
               <br/>
-              <table style=" border:1px solid gray; width:100%;" >
+              <table style=" border:1px solid gray; width:100%; margin-top:-20px;">
                 
                 <div style="width:70%; display:none; font-family:Arial, sans-serif;font-size:9pt; font-style:italic; text-align:left; margin-top:auto; margin-bottom:1em;">
                   Total con letra: 
@@ -492,7 +497,7 @@
                     </div>
                     <div class="barcode col-3">
                         <t t-set="sello" t-value="xml.get('Sello', 'No identificado')[-8:]"/>
-                        <img alt="Barcode" t-att-src="'/report/barcode/?type=QR&amp;value=%s' % quote_plus(                             'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(                                 re=o.l10n_mx_edi_cfdi_supplier_rfc, rr=o.l10n_mx_edi_cfdi_customer_rfc,                                 tt=o.l10n_mx_edi_cfdi_amount, id=o.l10n_mx_edi_cfdi_uuid)                                 + '&amp;fe=%s' % quote_plus(                                     sello, 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
+                        <img style="height:140px; width:140px;" alt="Barcode" t-att-src="'/report/barcode/?type=QR&amp;value=%s' % quote_plus(                             'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(                                 re=o.l10n_mx_edi_cfdi_supplier_rfc, rr=o.l10n_mx_edi_cfdi_customer_rfc,                                 tt=o.l10n_mx_edi_cfdi_amount, id=o.l10n_mx_edi_cfdi_uuid)                                 + '&amp;fe=%s' % quote_plus(                                     sello, 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
                     </div>
                 </div>
             </t>
@@ -571,6 +576,8 @@
                domiciliado. De no ser liquidado a su vencimiento causara 5% de interés mensual. En caso de cheque devuelto causara una penalización de $950.00 (NOVECIENTOS CINCUENTA PESOS 00/100 M.N) más iva, más una pena de incumplimiento del 5% de interés mensual.
              </div>
 
+             <br/>
+
 
              <table style=" border:0px solid white; width:100%;" >
                <tr>
@@ -588,7 +595,7 @@
 
                 </td>
                 <td style="width:30%;font-family:Arial, sans-serif;font-size:9pt; text-align:center; border-top:1px solid black;">
-                  NOMBRE Y FIRMA DE CONFORMIDAD
+                  <span>NOMBRE Y FIRMA DE CONFORMIDAD</span>
                 </td>
                 <td style="width:35%;font-family:Arial, sans-serif;font-size:9pt; text-align:center;">
 
