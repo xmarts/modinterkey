@@ -45,10 +45,11 @@ class InheritZona(models.Model):
 	# 	return record
 
 	zone = fields.Many2one('zonas.partner',string='Zona de Entrega', help='Coloca la zona de residencia para especificar la zona de localizacion')
+	nempresab = fields.Char(string="Nombre de empresa B")
+	rfcb = fields.Char(string="RFC B")
+	_sql_constraints = [('rfc_uniq','unique(rfcb)','EL RFC debe de ser unico, ya existe uno registrado.')]
 
-	_sql_constraints = [('rfc_uniq','unique(vat)','EL RFC debe de ser unico, ya existe uno registrado.')]
-
-	_sql_constraints = [('name_field_unique', 'unique(name)', 'El nombre de cliente ya existe')]
+	_sql_constraints = [('name_field_unique', 'unique(nempresab)', 'El nombre de empresa/cliente ya existe')]
 
 
 
