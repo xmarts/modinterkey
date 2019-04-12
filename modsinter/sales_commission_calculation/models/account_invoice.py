@@ -94,27 +94,27 @@ class AccountInvoice(models.Model):
         return True
 
     
-    @api.multi
-    def create_base_commission(self, type):
-        commission_obj = self.env['sales.commission']
-        product = self.env['product.product'].search([('is_commission_product','=',1)],limit=1)
-        for order in self:
-            if type == 'sales_person':
-                user = order.user_id.id
-            if type == 'sales_manager':
-                user = order.team_id.user_id.id
+    # @api.multi
+    # def create_base_commission(self, type):
+    #     commission_obj = self.env['sales.commission']
+    #     product = self.env['product.product'].search([('is_commission_product','=',1)],limit=1)
+    #     for order in self:
+    #         if type == 'sales_person':
+    #             user = order.user_id.id
+    #         if type == 'sales_manager':
+    #             user = order.team_id.user_id.id
 
-            today = date.today()
-            first_day = today.replace(day=1)
-            last_day = datetime.datetime(today.year,today.month,1)+relativedelta(months=1,days=-1)
-            commission_value = {
-                    'start_date' : first_day,
-                    'end_date': last_day,
-                    'product_id':product.id,
-                    'commission_user_id': user,
-                }
-            commission_id = commission_obj.create(commission_value)
-        return commission_id
+    #         today = date.today()
+    #         first_day = today.replace(day=1)
+    #         last_day = datetime.datetime(today.year,today.month,1)+relativedelta(months=1,days=-1)
+    #         commission_value = {
+    #                 'start_date' : first_day,
+    #                 'end_date': last_day,
+    #                 'product_id':product.id,
+    #                 'commission_user_id': user,
+    #             }
+    #         commission_id = commission_obj.create(commission_value)
+    #     return commission_id
     
     @api.multi
     def invoice_validate(self):

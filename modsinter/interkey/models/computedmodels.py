@@ -7,6 +7,7 @@ import time
 import codecs
 from xml.dom import minidom
 from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta, MO
 #from qrtools import QR
 
 import qrcode
@@ -118,13 +119,13 @@ class AddComputes(models.Model):
 		product = self.env['product.product'].search([('is_commission_product','=',1)],limit=1)
 		for order in self:
 			if type == 'sales_person':
-				user = order.sales_user_id.id
+				user = order.user_id.id
 			if type == 'sales_manager':
 				user = order.sales_team_id.user_id.id
 			#today = date.today()
 			##first_day = today.replace(day=1)
 			#last_day = datetime.datetime(today.year,today.month,1)+relativedelta(months=1,days=-1)
-			today = datetime.datetime.now()
+			today = datetime.now()
 			day = today.day
 			if day >= 1 and day <= 15:
 				dstart = today.replace(day=1,hour=00,minute=00,second=00)
